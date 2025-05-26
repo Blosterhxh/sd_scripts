@@ -54,6 +54,7 @@ logger = logging.getLogger(__name__)
 
 class NetworkTrainer:
     def __init__(self):
+        logger.info("initialisation du trainer")
         self.vae_scale_factor = 0.18215
         self.is_sdxl = False
 
@@ -1874,6 +1875,7 @@ def setup_parser() -> argparse.ArgumentParser:
 
 
 if __name__ == "__main__":
+    logger.info("main du trainer")
     parser = setup_parser()
 
     args = parser.parse_args()

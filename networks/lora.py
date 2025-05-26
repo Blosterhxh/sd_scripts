@@ -1019,9 +1019,9 @@ class LoRANetwork(torch.nn.Module):
                 up_params = lora.lora_up.weight.numel()
                 total += down_params + up_params
                 paramlist.append(total)
-            print(paramlist)
-            print(loras)
-            print(blocklist)
+            logger.info(paramlist)
+            logger.info(loras)
+            logger.info(blocklist)
             return loras, skipped
 
         text_encoders = text_encoder if type(text_encoder) == list else [text_encoder]

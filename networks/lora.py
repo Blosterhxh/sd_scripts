@@ -904,6 +904,7 @@ class LoRANetwork(torch.nn.Module):
         4. block_dims、block_alphas、conv_block_dims、conv_block_alphasを指定 : Conv2d3x3にも適用する
         5. modules_dimとmodules_alphaを指定 (推論用)
         """
+        print("LORA WAS ENTERED")
         super().__init__()
         self.multiplier = multiplier
 

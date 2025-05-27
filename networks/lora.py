@@ -1015,9 +1015,10 @@ class LoRANetwork(torch.nn.Module):
                             )
                             loras.append(lora)
             for lora in loras:
+                total = 0
                 down_params = lora.lora_down.weight.numel()
                 up_params = lora.lora_up.weight.numel()
-                total += down_params + up_params
+                total = down_params + up_params
                 paramlist.append(total)
             logger.info(paramlist)
             logger.info(loras)

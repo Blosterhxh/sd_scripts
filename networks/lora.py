@@ -959,6 +959,8 @@ class LoRANetwork(torch.nn.Module):
                 )
             )
             loras = []
+            paramlist = []
+            blocklist = []
             skipped = []
             for name, module in root_module.named_modules():
                 if module.__class__.__name__ in target_replace_modules:
@@ -982,6 +984,7 @@ class LoRANetwork(torch.nn.Module):
                             elif is_unet and block_dims is not None:
                                 # U-Netでblock_dims指定あり
                                 block_idx = get_block_index(lora_name, is_sdxl)
+                                blocklist.append(block_idx)
                                 if is_linear or is_conv2d_1x1:
                                     dim = block_dims[block_idx]
                                     alpha = block_alphas[block_idx]

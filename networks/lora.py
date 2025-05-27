@@ -975,6 +975,11 @@ class LoRANetwork(torch.nn.Module):
 
                             dim = None
                             alpha = None
+                            logger.info("entrée dans le module")
+                            block_idx = get_block_index(lora_name, is_sdxl)
+                            logger.info("calcul_block_idx")
+                            blocklist.append(block_idx)
+                            logger.info("ajout a la liste")
 
                             if modules_dim is not None:
                                 # モジュール指定あり
@@ -983,11 +988,6 @@ class LoRANetwork(torch.nn.Module):
                                     alpha = modules_alpha[lora_name]
                             elif is_unet and block_dims is not None:
                                 # U-Netでblock_dims指定あり
-                                logger.info("entrée dans la boucle")
-                                block_idx = get_block_index(lora_name, is_sdxl)
-                                logger.info("calcul_block_idx")
-                                blocklist.append(block_idx)
-                                logger.info("ajout a la liste")
                                 if is_linear or is_conv2d_1x1:
                                     dim = block_dims[block_idx]
                                     alpha = block_alphas[block_idx]
